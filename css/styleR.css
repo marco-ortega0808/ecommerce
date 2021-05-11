@@ -1,0 +1,129 @@
+body{
+    background: #f6f6f6;
+    padding: 0px;
+    margin: 0px;
+}
+  /*-------------------header----------------*/
+
+#contenerhadermenu{
+    background: #000000;
+}
+
+#barraini{
+    margin: 0px 100px 0px 930px;
+    padding: 1px 0px;
+}
+
+ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    
+}
+
+a{
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.primer-menu{
+    margin-right: 5px;
+    border-right: #ffffff solid 2px;
+}
+
+.color-primer-menu{
+    color: #ffffff;
+    font-size: 12px;
+    
+}
+
+#logo{
+    margin-left: 100px;
+}
+
+#alinglogo{ 
+    width: 20%;
+    height: 100%;
+    align-items: center;
+}
+/*----------------menu bar---------*/
+
+#menubar{
+    background: #1765be;
+    padding: 15px 0px 15px 0px;
+    border-bottom: #4b4b4b solid 2px;
+    display: flex;
+}
+.menu-bar{
+    margin-left: 6.6%;
+    padding-top: 7px;
+}
+.color-menu-bar{
+    color: #ffffff;
+    margin-left: 5px;
+}
+/*----------------Formulario Resgistro------------*/
+
+#formulariocone{
+    display: flex;
+    margin: 22px 0 122px 0;
+}
+
+#container{
+    width: 350px;
+    height: 300px;
+    padding: 20px 30px;
+    background: #4b4b4b;
+    margin: 20px 0px 0px 100px;
+}
+
+.titulo{
+    margin: 0;
+    text-align: center;
+    height: 40px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #f6f6f6;
+    font-size: 20px;
+}
+
+.formulario-inicio{
+    width: 95%;
+    border: 1px solid #797777;
+    margin-bottom: 30px;
+    padding: 10px 8px;
+    background: #807979;
+}
+
+.boton{
+    width: 100%;
+    height: 35px;
+    border: none;
+    margin-bottom: 15px;
+}
+.contraseña{
+    border-bottom: solid 1px #ffffff;
+}
+
+/*----------------Formulario Resgistro------------*/
+#containerdos{
+    margin: 20px 0px 0px 100px;
+    width: 350px;
+    padding: 20px 30px;
+    background: #4b4b4b;
+}
+
+/*-----------------Seccion footer-------------*/
+
+#copyr{
+    background: #202020;
+    margin-top: 30px;
+}
+
+#footercopyr{
+    margin: 0;
+    padding-top: 22px;
+    height: 47px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 12px;
+}

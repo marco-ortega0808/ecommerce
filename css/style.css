@@ -1,0 +1,116 @@
+body{
+    background: #f6f6f6;
+    padding: 0px;
+    margin: 0px;
+}
+  /*-------------------header----------------*/
+
+#contenerhadermenu{
+    background: #000000;
+}
+
+#barraini{
+    margin: 0px 100px 0px 930px;
+    padding: 1px 0px;
+}
+
+ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    
+}
+
+a{
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.primer-menu{
+    margin-right: 5px;
+    border-right: #ffffff solid 2px;
+}
+
+.color-primer-menu{
+    color: #ffffff;
+    font-size: 12px;
+    
+}
+
+#logo{
+    margin-left: 100px;
+}
+
+#alinglogo{ 
+    width: 20%;
+    height: 100%;
+    align-items: center;
+}
+/*----------------menu bar---------*/
+
+#menubar{
+    background: #1765be;
+    padding: 15px 0px 15px 0px;
+    border-bottom: #4b4b4b solid 2px;
+    display: flex;
+}
+.menu-bar{
+    margin-left: 6.6%;
+    padding-top: 7px;
+}
+.color-menu-bar{
+    color: #ffffff;
+    margin-left: 5px;
+}
+
+/*--------------banner-------------------------*/
+
+#banner{
+    margin: 20px 100px;
+}
+#tamañobanner{
+    width: 100%;
+    height: auto;
+}
+
+/*----------------Informacion con imagenes----*/
+#infoconimg{
+    display: flex;
+    padding: 5px;
+    margin: 0px 50px 23px 100px;
+}
+
+.conten-img-info{
+    background: rgb(129, 118, 118);
+    margin-right: 50px;
+    padding: 5px;
+    border: #333 solid 1px;
+    width: 290px;
+}
+
+.tamaño-img-info{
+    width: 28%;
+    height: 100%;
+    float: left;
+    margin-right: 6px;
+}
+
+.text-img-info{
+    font-size: 12px;
+}
+
+/*-----------------Seccion footer-------------*/
+
+
+#copyr{
+    background: #202020;
+}
+
+#footercopyr{
+    margin: 0;
+    padding-top: 22px;
+    height: 47px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 12px;
+}

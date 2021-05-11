@@ -1,0 +1,133 @@
+body{
+    background: #f6f6f6;
+    padding: 0px;
+    margin: 0px;
+}
+  /*-------------------header----------------*/
+
+#contenerhadermenu{
+    background: #000000;
+}
+
+#barraini{
+    margin: 0px 100px 0px 930px;
+    padding: 1px 0px;
+}
+
+ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    
+}
+
+a{
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.primer-menu{
+    margin-right: 5px;
+    border-right: #ffffff solid 2px;
+}
+
+.color-primer-menu{
+    color: #ffffff;
+    font-size: 12px;
+    
+}
+
+#logo{
+    margin-left: 100px;
+}
+
+#alinglogo{ 
+    width: 20%;
+    height: 100%;
+    align-items: center;
+}
+/*----------------menu bar---------*/
+
+#menubar{
+    background: #1765be;
+    padding: 15px 0px 15px 0px;
+    border-bottom: #4b4b4b solid 2px;
+    display: flex;
+}
+.menu-bar{
+    margin-left: 6.6%;
+    padding-top: 7px;
+}
+.color-menu-bar{
+    color: #ffffff;
+    margin-left: 5px;
+}
+ 
+/*-----------menu lateral--------*/
+
+#contenmenuinfo{
+    margin-top: 20px;
+    display: flex;
+}
+
+#menulateral{
+    width: 230px;
+    margin-left: 100px;
+}
+
+#titulo{
+    background: #333;
+    padding: 3px;
+}
+
+.catalogo{
+    display: flex;
+    padding: 3px 0 3px 2px;
+    background: #ecebeb;
+    border: #7e7d7d 1px solid;
+}
+
+.icono{
+    width: 25%;
+    margin-right: 10px;
+}
+
+/*-------------------todas el catalogo---------------*/
+
+#contenedor-productos-servicios{
+    margin: -20px 100px 0 15px;
+}
+
+h1{
+    border-bottom: 1px #4b4b4b solid ;
+}
+
+.conten-info{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.producto-hard{
+    width: 230px;
+    height: auto;
+    margin-left: 20px;
+}
+
+.tamanoimg{
+    width: 50%;
+}
+
+/*-----------------Seccion footer-------------*/
+
+#copyr{
+    background: #202020;
+}
+
+#footercopyr{
+    margin: 0;
+    padding-top: 22px;
+    height: 47px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 12px;
+}

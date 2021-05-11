@@ -1,0 +1,164 @@
+body{
+    background: #f6f6f6;
+    padding: 0px;
+    margin: 0px;
+}
+  /*-------------------header----------------*/
+
+#contenerhadermenu{
+    background: #000000;
+}
+
+#barraini{
+    margin: 0px 100px 0px 930px;
+    padding: 1px 0px;
+}
+
+ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    
+}
+
+a{
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.primer-menu{
+    margin-right: 5px;
+    border-right: #ffffff solid 2px;
+}
+
+.color-primer-menu{
+    color: #ffffff;
+    font-size: 12px;
+    
+}
+
+#logo{
+    margin-left: 100px;
+}
+
+#alinglogo{ 
+    width: 20%;
+    height: 100%;
+    align-items: center;
+}
+/*----------------menu bar---------*/
+
+#menubar{
+    background: #1765be;
+    padding: 15px 0px 15px 0px;
+    border-bottom: #4b4b4b solid 2px;
+    display: flex;
+}
+.menu-bar{
+    margin-left: 6.6%;
+    padding-top: 7px;
+}
+.color-menu-bar{
+    color: #FFFFFF;
+    margin-left: 5px;
+}
+
+/*----------------Formulario Contacto------------*/
+
+#formulariocone{
+    display: flex;
+    margin: 22px 0 40px 0;
+    margin-top: 0px;
+    margin-bottom: 50px;
+}
+
+#container{
+    width: 500px;
+    padding: 20px 30px;
+    background: #4b4b4b;
+    margin: 20px 10px 0px 100px;
+    height: auto;
+}
+
+.titulo{
+    margin: 0;
+    text-align: center;
+    height: 40px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #f6f6f6;
+    font-size: 20px;
+}
+
+#formularioconte{
+    display: flex;
+}
+
+.formulario-inicio{
+    width: 95%;
+    border: 1px solid #797777;
+    margin: 0 10px 30px 0   ;
+    padding: 10px 8px;
+    background: #807979;
+}
+
+#formulariocomentario{
+    width: 95%;
+    height: 250px;
+    border: 1px solid #797777;
+    margin-bottom: 30px;
+    padding: 10px 8px;
+    background: #807979;
+}
+
+#boton{
+    width: 35%;
+    height: 35px;
+    border: none;
+    margin-bottom: 15px;
+}
+#contraseña{
+    border-bottom: solid 1px #ffffff;
+}
+
+/*-----------------Contactos-------------------------*/
+
+#infocantacto{
+    width: 410px;
+    margin: 0 100px 0 15px;
+    margin-top: 20px;
+}
+
+.conteicono{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.conteimg{
+    width: 10%;
+    margin-right: 15px;
+}
+
+.conte-mas-info{
+    margin-top: 15px;
+}
+
+.redes-icono{
+    width: 5%;
+    margin-right: 5px;
+}
+
+/*-----------------Seccion footer-------------*/
+
+#copyr{
+    background: #202020;
+}
+
+#footercopyr{
+    margin: 0;
+    padding-top: 22px;
+    height: 47px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 12px;
+}
+
