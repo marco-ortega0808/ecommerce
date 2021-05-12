@@ -1,3 +1,4 @@
+/*-------------------Pagina Caracteristicas de los servicios------------*/
 body{
     background: #f6f6f6;
     padding: 0px;
@@ -60,24 +61,42 @@ a{
     width: 210px;
 }
 .color-menu-bar{
-    color: #FFFFFF;
+    color: #ffffff;
     margin-left: 5px;
+}
+
+/*--------------imagenes de del producto-------------*/
+
+#conteinfo{
+    display: flex;
+    margin: 20px 100px 40px 100px;
+}
+
+#conteimg{
+    width: 50%;
+    margin-right: 40px;
+}
+
+#imgprincipal{
+    width: 100%;
+}
+
+.img-demo{
+    width: 25%;
+}
+
+#contetxt{
+    width: 50%;
 }
 
 /*----------------Formulario Contacto------------*/
 
-#formulariocone{
-    display: flex;
-    margin: 22px 0 40px 0;
-    margin-top: 0px;
-    margin-bottom: 50px;
-}
 
 #container{
-    width: 500px;
+    width: 90%;
     padding: 20px 30px;
     background: #4b4b4b;
-    margin: 20px 10px 0px 100px;
+    margin: 20px 0px 0px 0px;
     height: auto;
 }
 
@@ -90,10 +109,6 @@ a{
     font-size: 20px;
 }
 
-#formularioconte{
-    display: flex;
-}
-
 .formulario-inicio{
     width: 95%;
     border: 1px solid #797777;
@@ -104,7 +119,7 @@ a{
 
 #formulariocomentario{
     width: 95%;
-    height: 250px;
+    height: 133px;
     border: 1px solid #797777;
     margin-bottom: 30px;
     padding: 10px 8px;
@@ -122,34 +137,9 @@ a{
     border-bottom: solid 1px #ffffff;
 }
 
-/*-----------------Contactos-------------------------*/
-
-#infocantacto{
-    width: 410px;
-    margin: 0 100px 0 15px;
-    margin-top: 20px;
-}
-
-.conteicono{
-    display: flex;
-    margin-bottom: 10px;
-}
-
-.conteimg{
-    width: 10%;
-    margin-right: 15px;
-}
-
-.conte-mas-info{
-    margin-top: 15px;
-}
-
-.redes-icono{
-    width: 5%;
-    margin-right: 5px;
-}
 
 /*-----------------Seccion footer-------------*/
+
 
 #copyr{
     background: #202020;
@@ -163,4 +153,3 @@ a{
     color: #ffffff;
     font-size: 12px;
 }
-
