@@ -66,7 +66,16 @@ a{
 /*----------------Formulario Resgistro------------*/
 
 #formulariocone{
-    margin: 22px 0 125px 0;
+    display: flex;
+    margin: 22px 0 252px 0;
+}
+
+#container{
+    width: 350px;
+    height: 300px;
+    padding: 20px 30px;
+    background: #4b4b4b;
+    margin: 20px 0px 0px 400px;
 }
 
 .titulo{
@@ -81,7 +90,7 @@ a{
 .formulario-inicio{
     width: 95%;
     border: 1px solid #797777;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
     padding: 10px 8px;
     background: #807979;
 }
@@ -94,14 +103,6 @@ a{
 }
 .contraseña{
     border-bottom: solid 1px #ffffff;
-}
-
-/*----------------Formulario Resgistro------------*/
-#containerdos{
-    margin: 40px 0px 10px 400px;
-    width: 350px;
-    padding: 20px 30px;
-    background: #4b4b4b;
 }
 
 /*-----------------Seccion footer-------------*/
