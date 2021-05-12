@@ -1,3 +1,4 @@
+/*-------------------Pagina Principal------------*/
 body{
     background: #f6f6f6;
     padding: 0px;
@@ -55,8 +56,9 @@ a{
     display: flex;
 }
 .menu-bar{
-    margin-left: 6.6%;
+    margin-left: 6%;
     padding-top: 7px;
+    width: 210px;
 }
 .color-menu-bar{
     color: #ffffff;
