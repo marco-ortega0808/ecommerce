@@ -69,10 +69,15 @@ a{
 
 #banner{
     margin: 20px 100px;
+    border-bottom: #4b4b4b 2px solid;    
 }
 #tamañobanner{
     width: 100%;
     height: auto;
+}
+#descripcionbaner{
+    font-size: 20px;
+    text-align: center;    
 }
 
 /*----------------Informacion con imagenes----*/
