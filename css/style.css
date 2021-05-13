@@ -95,6 +95,10 @@ a{
     width: 290px;
 }
 
+h5{
+    color: black;
+}
+
 .tamaño-img-info{
     width: 28%;
     height: 100%;
@@ -104,6 +108,7 @@ a{
 
 .text-img-info{
     font-size: 12px;
+    color: black;
 }
 
 /*-----------------Seccion footer-------------*/
