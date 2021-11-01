@@ -1,58 +1,22 @@
 /*-------------------Pagina Principal------------*/
 body{
     background: #f6f6f6;
-    padding: 0px;
-    margin: 0px;
 }
   /*-------------------header----------------*/
 ul{
     display: flex;
     list-style: none;
-    margin: 0;
-    
+    padding: 0;
 }
 
 a{
     text-decoration: none;
-    margin-right: 5px;
 }
 
-.primer-menu{
-    margin-right: 5px;
-    border-right: #ffffff solid 2px;
-}
+/*----------------nav---------*/
 
-.color-primer-menu{
-    color: #ffffff;
-    font-size: 12px;
-    
-}
-
-#logo{
-    margin-left: 100px;
-}
-
-#alinglogo{ 
-    width: 20%;
-    height: 100%;
-    align-items: center;
-}
-/*----------------menu bar---------*/
-
-#menubar{
-    background: #1765be;
-    padding: 15px 0px 15px 0px;
-    border-bottom: #4b4b4b solid 2px;
-    display: flex;
-}
-.menu-bar{
-    margin-left: 6%;
-    padding-top: 7px;
-    width: 210px;
-}
-.color-menu-bar{
-    color: #ffffff;
-    margin-left: 5px;
+.logo{
+    height: 70px;
 }
 
 /*--------------banner-------------------------*/
