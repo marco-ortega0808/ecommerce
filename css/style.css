@@ -18,20 +18,15 @@ a{
 .logo{
     height: 70px;
 }
+/*--------------Section-------------------------*/
 
-/*--------------banner-------------------------*/
+.containerBanner{
+    border-bottom: #4b4b4b 3px solid;    
+}
 
-#banner{
-    margin: 20px 100px;
-    border-bottom: #4b4b4b 2px solid;    
-}
-#tamañobanner{
-    width: 100%;
-    height: auto;
-}
-#descripcionbaner{
+.descripcionBanner{
     font-size: 20px;
-    text-align: center;    
+    margin-bottom: 12px; 
 }
 
 /*----------------Informacion con imagenes----*/
