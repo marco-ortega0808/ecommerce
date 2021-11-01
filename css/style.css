@@ -7,6 +7,7 @@ body{
     display: flex;
     list-style: none;
     padding: 0;
+    padding-right: auto;
 }
 
 a{
@@ -27,4 +28,18 @@ a{
 
 h5{
     color: black;
+}
+/*-------------Productos----------*/
+.relleno{
+        padding: 0 !important;
+}
+
+@media (min-width: 768px) { 
+    
+    .relleno-r{
+        padding-right: 12px !important;
+    }
+    .relleno-l{
+        padding-left: 12px !important;
+    }
 }
