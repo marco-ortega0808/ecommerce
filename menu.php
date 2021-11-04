@@ -29,7 +29,16 @@
                     <a class="nav-link active text-center" aria-current="page" href="contacto.html">Contáctanos</a>
                 </li>
                 <li class="nav-item">
-                    <a aria-current="page" class="fas fa-shopping-cart nav-link active text-center" href="carrito.php"></a>
+                    <?php
+                        require_once 'conbd.php';
+                        $query = $mbd -> prepare("SELECT * FROM carrito");
+                        $query -> execute();
+                        $row = $query -> rowCount();
+                    ?>
+                        <span>  </span>
+                    <a href="carrito.php">
+                        <i aria-current="page" class="fas fa-shopping-cart nav-link active text-center" > <?php print $row;?></i>
+                    </a>
                 </li>
             </ul>
         </div>
