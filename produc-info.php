@@ -101,6 +101,6 @@
                 <span class="text-white">Copyrigft c 2004, JDA </span>
             </div>
         </div>
-</footer>
+    </footer>
 </div>
 </html>
