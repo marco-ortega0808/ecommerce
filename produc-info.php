@@ -15,40 +15,9 @@
     </head>
 <div class="container-fluid">
     <body>
-        <header>
-        <div class="row bg-dark">
-            <div class="col-3 col-md-9 col-lg-10"></div>
-            <div class="col-lg-2 d-flex justify-content-center justify-content-lg-end justify-content-md-end">
-                <ul class="mt-2 mb-2 sin-estilos">
-                    <li class="ms-1">
-                        <a class="text-white" href="registro.html">Registro</a>
-                    </li>
-                    <li class="ms-3">
-                        <a class="text-white" href="iniciar-sesion.html"> Iniciar Sesión</a>
-                    </li>                                                  
-                </ul>
-            </div>
-        </div>
-            
-        </header>
-        <nav class="row navbar navbar-expand-lg navbar-light bg-primary mb-1">
-            <div class="container-fluid">
-            <a class="navbar-brand col-lg-7" href="index.html"><img class="logo" src="img/logo.jpg" alt="Logo de prueba"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse col-lg-3 justify-content-lg-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active text-center" aria-current="page" href="productos.html">Productos y Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active text-center" style="padding-right: 0 !important;" aria-current="page" href="contacto.html">Contáctanos</a>
-                    </li>
-                </ul>
-            </div>
-            </div>
-        </nav>
+        <?php
+            require 'menu.php';
+        ?>
         <section>
             <div class="row">
                 <div class="col-sm-12 col-md-5 col-lg-5 mt-2">
@@ -102,7 +71,11 @@
                                     </div>
                                 </div>
                                 <p class="card-text"><small class="text-muted">4 disponibles</small></p>
-                                <button type="button" class="btn btn-primary mb-1"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
+                                <a type="button" class="btn btn-primary mb-1" href="add-car.php?name=Procesador AMD Ryzen 5 3600&price=7500&img=img/procesador.jpg"><i class="fas fa-shopping-cart"></i> Agregar al carrito</a>
+                                <?php
+                                    $query = $_GET['query'];
+                                    print $query;
+                                ?>
                             </div>
                         </div>
                     </div>
