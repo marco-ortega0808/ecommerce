@@ -1,7 +1,7 @@
 <header>
 <div class="row bg-dark">
-    <div class="col-3 col-md-9 col-lg-10"></div>
-    <div class="col-lg-2 d-flex justify-content-center justify-content-lg-end justify-content-md-end">
+    <div class="col-3 col-md-9 col-lg-9"></div>
+    <div class="col-lg-3 d-flex justify-content-center justify-content-lg-end justify-content-md-end">
         <ul class="mt-2 mb-2 sin-estilos">
             <li class="ms-1">
                 <a class="text-white" href="registro.php">Registrarme</a>

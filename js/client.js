@@ -66,13 +66,13 @@ async function checkStatus() {
 
   switch (paymentIntent.status) {
     case "succeeded":
-      showMessage("Payment succeeded!");
+      showMessage("Pago exitoso!");
       break;
     case "processing":
-      showMessage("Your payment is processing.");
+      showMessage("Su pago esta en proceso.");
       break;
     case "requires_payment_method":
-      showMessage("Your payment was not successful, please try again.");
+      showMessage("Su pago no fue completado, intentelo de nuevo.");
       break;
     default:
       showMessage("Something went wrong.");

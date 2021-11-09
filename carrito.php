@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Carrito</title>
         <!--Fontawesome-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
         <!-- CSS only -->
@@ -29,7 +29,7 @@
                 $array = $query -> fetch();
         ?>
         <div class="container-fluid">
-            <div class="row">
+            <div class="row mt-2">
                 <table class="table text-center table table-striped table-sm">
                     <thead>
                         <tr>
@@ -66,7 +66,7 @@
                         <p class="col-6">$ <?php print $array[2] ?></p>
                         <h5 class="card-title col-6">Total (IVA incluido)</h5>
                         <p class="col-6">$ <?php print $array[2]?></p>
-                        <button class="btn btn-primary mt-2">Ir al siguiente paso</button>
+                        <a class="btn btn-primary mt-2" href="direccion.php">Ir al siguiente paso</a>
 
                         <!-- Display a payment form 
                         <form id="payment-form">
