@@ -12,6 +12,8 @@
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/style.css">
+        <script src="https://js.stripe.com/v3/"></script>
+        <script src="js/client.js" defer></script>
 </head>
 <div class="container-fluid">
     <body>
@@ -44,10 +46,14 @@
                         <td ><img style="width: 115px;" src="<?php print $array[3]?>" alt=""></td>
                         <td><?php print $array[1]?></td>
                         <td>$<?php print $array[2]?></td>
-                        <td><i class="fas fa-trash-alt"></i></td>
+                        <td> <a class="btn btn-danger" href="delet-product.php?id=<?php print $array[0]?>"><i class="fas fa-trash-alt"></i></a></td>
                         </tr>
                     </tbody>
                 </table>
+                <?php
+                    $respuesta = $_GET['query'];
+                    print $respuesta;
+                ?>
             </div>
         <?php
             }
@@ -58,11 +64,21 @@
                     <div class=" row card-body">
                         <p class="col-6">Subtotal</p>
                         <p class="col-6">$ <?php print $array[2] ?></p>
-                        <p class="col-6">Envio</p>
-                        <p class="col-6">$ 250</p>
                         <h5 class="card-title col-6">Total (IVA incluido)</h5>
-                        <p class="col-6">$ <?php print $array[2]+250 ?></p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <p class="col-6">$ <?php print $array[2]?></p>
+                        <button class="btn btn-primary mt-2">Ir al siguiente paso</button>
+
+                        <!-- Display a payment form 
+                        <form id="payment-form">
+                        <div id="payment-element">
+                            
+                        </div>
+                        <button id="submit" class="btn btn-primary mt-2">
+                            <div class="spinner hidden" id="spinner"></div>
+                            <span id="button-text">Pagar ahora</span>
+                        </button>
+                        <div id="payment-message" class="hidden"></div>
+                        </form>-->
                     </div>
                 </div>
             </div>
