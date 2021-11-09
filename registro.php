@@ -24,13 +24,21 @@
         <section>    
             <div class="mx-auto mb-2 mt-2 col-sm-12 col-md-12 col-lg-6" style="margin: 125px auto !important;">
                         <div class="card p-3">      
-                            <h5 class="titulo mt-3">Crea una nueva cuenta</h5>
+                            <h5 class="titulo mt-2">Crea una nueva cuenta</h5>
                             <div id="formulariocone">  
-                                <input class="form-control me-1 " type="text" name="usuario" value="" placeholder=" Nombre de Usuario">
-                                <input class="form-control me-1 mt-3" type="text" name="usuario" value="" placeholder="Correo Electrónico">
-                                <input class="form-control me-1 mt-3" type="password" name="contrasena" value="" placeholder="contrasena">
-                                <input class="form-control me-1 mt-3" type="password" name="contrasena" value="" placeholder=" verifica contrasena">
-                                <button type="button" class="btn btn-secondary mt-2">Enviar  <i class="far fa-paper-plane"></i></button>
+                                <form action="add-registro.php" method="post">
+                                <input class="form-control me-1 " type="name" name="name" placeholder=" Nombre de Usuario">
+                                <input class="form-control me-1 mt-3" type="email" name="email" placeholder="Correo Electrónico">
+                                <input class="form-control me-1 mt-3" type="password" name="pasword" placeholder="contrasena">
+                                <input class="form-control me-1 mt-3" type="password" name="pasword2" placeholder=" verifica contrasena">
+                                <button type="submit" name="registrar" class="btn btn-secondary mt-3">Registrar  <i class="far fa-paper-plane"></i></button>
+                                <samp class="text-danger">
+                                    <?php
+                                        $error = $_GET['error'];
+                                        print $error;
+                                    ?>
+                                </samp>
+                                </form>
                             </div>
                         </div>
                     </div>
