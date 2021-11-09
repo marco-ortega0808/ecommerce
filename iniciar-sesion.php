@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Iniciar Sesión</title>
     <!--Fontawesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <!-- CSS only -->
@@ -25,9 +25,17 @@
                 <div class="card p-3">      
                     <h5 class="titulo mt-3">Iniciar Sesión</h5>
                     <div id="formulariocone">  
-                        <input class="form-control me-1" id="exampleFormControlInput1" type="email" name="usuario" value="" placeholder="Correo Electrónico">
-                        <input class="form-control me-1 mt-3" id="exampleFormControlInput1" type="password" name="contrasena" value="" placeholder="Contraseña">
-                        <button type="button" class="btn btn-secondary mt-2">Enviar  <i class="far fa-paper-plane"></i></button>
+                        <form action="validar-inici-sesion.php" method="post">
+                        <input class="form-control me-1" id="exampleFormControlInput1" type="email" name="email" value="" placeholder="Correo Electrónico">
+                        <input class="form-control me-1 mt-3" id="exampleFormControlInput1" type="password" name="password" value="" placeholder="Contraseña">
+                        <button type="submit" name="sesion" class="btn btn-secondary mt-2">Iniciar sesión <i class="far fa-paper-plane"></i></button>
+                        </form>
+                        <samp class="text-seccess">
+                            <?php
+                                $confirmacion = $_GET['query'];
+                                print $confirmacion;
+                            ?>
+                        </samp>
                         <p class="contraseña"></p>
                     </div>
                 </div>
