@@ -1,3 +1,6 @@
+<?php
+    require 'validar-sesion-iniciada.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,65 +22,109 @@
             require 'menu.php';
         ?>
         <div>
-            <div class="row border-bottom mt-3">
-                <div class="col-lg-3">
-                    <i class="fas fa-shopping-cart"><span> Carrito </span></i>
-                </div>
-                <div class="col-lg-3">
-                    <p class="text-warning h5">1. Dirección</p>
-                </div>
-                <div class="col-lg-3">
-                    <p class=" h5">2. Pago</p>
-                </div>
-                <div class="col-lg-3">
-                    <p class=" h5">3. Confirmacion de pago</p>
+            <div class="border-bottom">
+                <div class="row mt-3">
+                    <div class="col-lg-3">
+                        <i class="fas fa-shopping-cart"><span> Carrito </span></i>
+                    </div>
+                    <div class="col-lg-3">
+                        <p class="text-warning h5">1. Dirección</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <p class=" h5">2. Pago</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <p class=" h5">3. Confirmacion de pago</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <form class="card mt-2 mb-3">
+       
+        <?php
+            $repuesta = $mbd -> prepare("SELECT * FROM direccion");
+            $repuesta -> execute();
+            $igual = $repuesta -> fetch();
+            
+            if ($igual[10] == $arry[0]) {
+            
+        ?>
+        <form class="card mt-3 mb-3" action="update-direccion.php" method="post">
             <div class="row p-3">
+                    <input style="display: none;" name="id" value="<?php print $igual[0]?>">
                 <div class="mb-3 col-lg-6">
-                    <label for="exampleInputEmail1" class="form-label">Nombre destinatario:</label>
-                    <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="name" name="name" value="<?php print $igual[1]?>">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <label for="exampleInputEmail1" class="form-label">Apellido destinatario:</label>
-                    <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="lastname" name="lastname" value="<?php print $igual[2]?>">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <label for="exampleInputPassword1" class="form-label">Teléfono / Celular: </label>
-                    <input type="tel" class="form-control" id="exampleInputPassword1">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="tel" name="cel" value="<?php print $igual[3]?>">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <label for="exampleInputPassword1" class="form-label">Calle: </label>
-                    <input type="text" class="form-control" id="exampleInputPassword1">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="calle" value="<?php print $igual[4]?>">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <label for="exampleInputPassword1" class="form-label">Colinia: </label>
-                    <input type="text" class="form-control" id="exampleInputPassword1">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="colonia" value="<?php print $igual[5]?>">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <label for="exampleInputPassword1" class="form-label">CP: </label>
-                    <input type="text" class="form-control" id="exampleInputPassword1">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="cp" value="<?php print $igual[6]?>">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <label for="exampleInputPassword1" class="form-label">Ciudad: </label>
-                    <input type="text" class="form-control" id="exampleInputPassword1">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="ciudad" value="<?php print $igual[7]?>">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <label for="exampleInputPassword1" class="form-label">Estado: </label>
-                    <input type="text" class="form-control" id="exampleInputPassword1">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="estado" value="<?php print $igual[8]?>">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Referencia: </label>
-                    <input type="text" class="form-control" id="exampleInputPassword1">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="referencia" value="<?php print $igual[9]?>">
                 </div>
                 <div class="col-12">
-                    <a type="submit" class="btn btn-primary" href="pago.php">Siguiente</a>
+                    <button type="submit" name="actualiza" class="btn btn-primary mt-2">Actualizar y continuar<i class="far fa-paper-plane"></i></button>
                 </div>
             </div>
         </form>
+            <?php
+            }if ($igual[10] != $arry[0]) {
+            ?>
+            <form class="card mt-3 mb-3" action="add-direccion.php" method="post">
+             <div class="row p-3">
+                <div class="mb-3 col-lg-6">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="name" name="name" placeholder="Nombre">
+                </div>
+                <div class="mb-3 col-lg-6">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="lastname" name="lastname" placeholder="Apellidos">
+                </div>
+                <div class="mb-3 col-lg-6">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="tel" name="cel" placeholder="Telefono">
+                </div>
+                <div class="mb-3 col-lg-6">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="calle" placeholder="calle">
+                </div>
+                <div class="mb-3 col-lg-6">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="colonia" placeholder="Colonia">
+                </div>
+                <div class="mb-3 col-lg-6">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="cp" placeholder="CP">
+                </div>
+                <div class="mb-3 col-lg-6">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="ciudad" placeholder="Ciudad">
+                </div>
+                <div class="mb-3 col-lg-6">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="estado" placeholder="Estado">
+                </div>
+                <div class="mb-3">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="referencia" placeholder="Referencia">
+                </div>
+                <div class="col-12">
+                    <button type="submit" name="direccion" class="btn btn-primary mt-2">Ir al siguiente paso<i class="far fa-paper-plane"></i></button>
+                </div>
+            </div>
+            <?php
+            }
+            ?>
+        </form>
     </body>
+
     <footer>
         <div class="row bg-dark">
             <div class="mx-auto mb-2 mt-2" style="width: 200px;">
