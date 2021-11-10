@@ -34,7 +34,7 @@ async function handleSubmit(e) {
   const { error } = await stripe.confirmPayment({
     elements,
     confirmParams: {
-      return_url: "http://teckno-productos.test/checkout.php",
+      return_url: "http://teckno-productos.test/envio-confirmacion.php",
     },
   });
 
