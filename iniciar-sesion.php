@@ -25,7 +25,7 @@
                 <div class="card p-3">      
                     <h5 class="titulo mt-3">Iniciar Sesión</h5>
                     <div id="formulariocone">  
-                        <form action="validar-inici-sesion.php" method="post">
+                        <form action="validar-inicio-sesion.php" method="post">
                         <input class="form-control me-1" id="exampleFormControlInput1" type="email" name="email" value="" placeholder="Correo Electrónico">
                         <input class="form-control me-1 mt-3" id="exampleFormControlInput1" type="password" name="password" value="" placeholder="Contraseña">
                         <button type="submit" name="sesion" class="btn btn-secondary mt-2">Iniciar sesión <i class="far fa-paper-plane"></i></button>

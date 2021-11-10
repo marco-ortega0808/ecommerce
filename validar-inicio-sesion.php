@@ -12,13 +12,11 @@
         $query->execute();
         $row = $query -> rowCount();
         
-        if($row==1) {
+        if($row>0) {
             $_SESSION['usuario'] = $email;
             header('location:index.php');
-
-        
         } else {
-            header('location:iniciar-sesion.php?error=Error de sesion');
+            header('location:iniciar-sesion.php');
         }
     }
      
