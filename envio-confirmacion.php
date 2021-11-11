@@ -1,6 +1,27 @@
 
 <?php 
     require 'menu.php';
+    require 'conbd.php';
+
+    $produc = $mbd -> prepare("SELECT * FROM carrito");
+    $produc -> execute();
+    $id = $produc->fetch();
+     print var_dump($id);
+    $user = $arry[0];
+
+    $answer = $mbd->prepare("INSERT INTO compras (name, price, img, idUser) VALUES (:nombre, :precio, :imagen, :user)");
+    $answer -> bindValue(':nombre', $id[1]);
+    $answer -> bindValue(':precio', $id[2]);
+    $answer -> bindValue(':imagen', $id[3]);
+    $answer -> bindValue(':user', $user);
+    $answer -> execute();
+
+    $query = $mbd -> prepare("DELETE FROM carrito WHERE id = :id ");
+      
+    $query -> bindValue(':id', $id[0]);
+
+    $query->execute();
+
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
     use PHPMailer\PHPMailer\SMTP;
@@ -27,8 +48,8 @@
         $mail->addReplyTo('marcoantoniot089@gmail.com');
 
         $mail->isHTML(true);
-        $mail->Subject = 'Gracias por renalizar su compra';
-        $mail->Body = "<p style='text-align: center;'> <h1>Gracias por renalizar su compra</h1>
+        $mail->Subject = 'Gracias por realizar su compra';
+        $mail->Body = "<p style='text-align: center;'> <h1>Gracias por realizar su compra</h1>
         <h2>Producto que compro</h2> 
         <img style='height: 150px'; src='https://m.media-amazon.com/images/I/71WPGXQLcLL._AC_SL1384_.jpg' 
         <ul>
@@ -39,7 +60,7 @@
         <li>HDMI: 1x, DVI-I: 0x, DisplayPort: 1x</li>
         </ul> 
         <label>Precio: $7,500</label><br>
-        <a href='http://teckno-productos.test/index.php'>Lista de productos comprados</a>
+        <a href='http://teckno-productos.test/compras.php'>Lista de productos comprados</a>
         </p>";
         $mail->send();
         
