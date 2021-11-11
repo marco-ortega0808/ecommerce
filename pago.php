@@ -22,9 +22,22 @@
     <body>
         <?php
             require 'menu.php';
+            $id = $arry[0];
+            $respuesta = $mbd -> prepare("SELECT * FROM direccion WHERE idUser = :id");
+            $respuesta -> bindParam(':id', $id);
+            $respuesta -> execute();
+            $direcc = $respuesta -> fetch();
+
+                if ( $direcc[10] > $arry[0] || $direcc[10] < $arry[0]) {
+                    header('location:direccion.php?add=Ingrese su dirección');
+            
+                }elseif ($row == 0 || $direcc == false) {
+                header('location:productos.php');
+                }
+                else {
         ?>
         <div>
-            <div class="border-bottom mb-3">
+            <div class="border-bottom mb-3" >
                 <div class="row mt-3">
                     <div class="col-lg-3">
                         <i class="fas fa-shopping-cart"><span> Carrito </span></i>
@@ -41,7 +54,7 @@
                 </div>
             </div>
             
-            <form id="payment-form">
+            <form id="payment-form" style="margin: 125px auto !important;">
             <div id="payment-element">
                 
             </div>
@@ -51,6 +64,16 @@
             </button>
             <div id="payment-message" class="hidden"></div>
             </form>
+            <?php
+                }
+            ?>
         </div>
     </body>
+    <footer>
+        <div class="row bg-dark">       
+            <div  class="mx-auto mb-2 mt-2" style="width: 200px;">
+                <p class="text-white">Copyrigft c 2004, JDA </p>
+            </div>
+        </div>
+    </footer>
 </div>

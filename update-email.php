@@ -1,3 +1,6 @@
+<?php
+    require 'validar-sesion-iniciada.php'
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

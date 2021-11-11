@@ -70,7 +70,7 @@
                             <p class="col-6">$ <?php print $array[2] ?></p>
                             <h5 class="card-title col-6">Total (IVA incluido)</h5>
                             <p class="col-6">$ <?php print $array[2]?></p>
-                            <a class="btn btn-primary mt-2" href="direccion.php">Ir al siguiente paso</a>
+                            <a class="btn btn-primary mt-2" href="direccion.php?pasos=1">Ir al siguiente paso</a>
 
                         </div>
                     </div>

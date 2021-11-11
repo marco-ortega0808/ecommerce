@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mis datos</title>
     <!--Fontawesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <!-- CSS only -->
@@ -51,6 +51,14 @@
                     </label>
                     <a href="update-email.php?correo=<?php print $arry[2];?>" class="text-end col"><span class="far fa-edit "></span></a>
                     <a href="update-email.php?correo=<?php print $arry[2];?>" class="col-2 text-start"> Editar </a>
+                </div>
+                <div class="row mt-3 mb-3">
+                    <span class="fas fa-route col"></span>
+                    <label class="col-6 text-start">
+                        Dirección
+                    </label>
+                    <a href="update-direc-u.php" class="text-end col"><span class="far fa-edit "></span></a>
+                    <a href="update-direc-u.php" class="col-2 text-start"> Editar </a>
                 </div>
                 <div class="row mb-3">
                     <span class="fas fa-unlock-alt col"></span>

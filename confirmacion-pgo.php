@@ -20,6 +20,9 @@
     <body>
         <?php
             require 'menu.php';
+            $exito = $_GET['exito'];
+            if ($exito == "succeeded") {
+                
         ?>
         <div class="border-bottom">
                 <div class="row mt-3">
@@ -37,11 +40,25 @@
                     </div>
                 </div>
             </div>
+            <div class="" style="margin: 125px auto !important;">
         <p class="text-center h1 mt-5">¡Gracias por hacer su compra con nosotros!</p>
         <p class="text-center mt-3">En breve recibirás un correo de la compra realizada</p>
         <p class="text-center">
         <a href="index.php" class=" btn btn-primary mt-2">Finalizar</a>
-        </p>
+        </p></div>
+        <?php
+            }
+            if ($exito != "succeeded") {
+                header('location:productos.php');
+            }
+        ?>
     </body>
+    <footer>
+        <div class="row bg-dark">       
+            <div  class="mx-auto mb-2 mt-2" style="width: 200px;">
+                <p class="text-white">Copyrigft c 2004, JDA </p>
+            </div>
+        </div>
+    </footer>
 </div>
 </html>
