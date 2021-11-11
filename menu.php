@@ -4,8 +4,8 @@
 ?>
 <header>
 <div class="row bg-dark">
-    <div class="col-3 col-md-9 col-lg-9"></div>
-    <div class="col-lg-3 d-flex justify-content-center justify-content-lg-end justify-content-md-end">
+    <div class="col-3 col-md-8 col-lg-8"></div>
+    <div class="col-lg-4 d-flex justify-content-center justify-content-lg-end justify-content-md-end">
         <ul class="mt-2 mb-2 sin-estilos">
             <?php
                 $usuario = $_SESSION['usuario'];
@@ -19,10 +19,10 @@
                 if ($arry[2] != null && $arry[2] != "") {
                 ?>
                 <li>
-                    <a class="text-white" href="#"><i class="fas fa-user text-white"></i> <?php print $arry[1] ?></a>
+                    <a class="text-white" href="user.php"><i class="fas fa-user text-white"></i> <?php print $arry[1] ?></a>
                 </li>
                 <li class="ms-3">
-                    <a class="text-white" href="#">Compras</a>
+                    <a class="text-white" href="compras.php">Compras</a>
                 </li>
                 <li class="ms-3">
                     <a class="text-white" href="close-sesion.php">Cerrar sesión</a>

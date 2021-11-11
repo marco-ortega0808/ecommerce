@@ -1,3 +1,6 @@
+<?php
+ require 'validar-sesion-iniciada.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,8 +37,8 @@
                     </div>
                 </div>
             </div>
-        <p class="text-center h1 mt-3">¡Gracias por hacer su compra con nosotro!</p>
-        <p class="text-center mt-3">En breve recibira un correo de la compra realizada</p>
+        <p class="text-center h1 mt-5">¡Gracias por hacer su compra con nosotros!</p>
+        <p class="text-center mt-3">En breve recibirás un correo de la compra realizada</p>
         <p class="text-center">
         <a href="index.php" class=" btn btn-primary mt-2">Finalizar</a>
         </p>

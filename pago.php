@@ -1,3 +1,6 @@
+<?php
+ require 'validar-sesion-iniciada.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +24,7 @@
             require 'menu.php';
         ?>
         <div>
-            <div class="border-bottom">
+            <div class="border-bottom mb-3">
                 <div class="row mt-3">
                     <div class="col-lg-3">
                         <i class="fas fa-shopping-cart"><span> Carrito </span></i>
