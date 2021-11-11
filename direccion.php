@@ -20,6 +20,10 @@
     <body>
         <?php
             require 'menu.php';
+            
+            if ($row == 0) {
+            header('location:productos.php');
+            }
         ?>
         <div>
             <div class="border-bottom">
@@ -41,7 +45,10 @@
         </div>
        
         <?php
-            $repuesta = $mbd -> prepare("SELECT * FROM direccion");
+            $id = $arry[0];
+            
+            $repuesta = $mbd -> prepare("SELECT * FROM direccion WHERE idUser = :id");
+            $repuesta -> bindParam(':id', $id);
             $repuesta -> execute();
             $igual = $repuesta -> fetch();
             
@@ -84,45 +91,48 @@
             </div>
         </form>
             <?php
-            }if ($igual[10] != $arry[0]) {
+                }if ($igual[10] != $arry[0]) {
             ?>
-            <form class="card mt-3 mb-3" action="add-direccion.php" method="post">
+        <form class="card mt-3 mb-3" action="add-direccion.php" method="post">
              <div class="row p-3">
-                <div class="mb-3 col-lg-6">
-                    <input class="form-control mt-2" id="exampleFormControlInput1" type="name" name="name" placeholder="Nombre">
+                <div class="mb-3 col-lg-6"> 
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="name" name="name" placeholder="Nombre destinatario *">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <input class="form-control mt-2" id="exampleFormControlInput1" type="lastname" name="lastname" placeholder="Apellidos">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="lastname" name="lastname" placeholder="Apellidos destinatario *">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <input class="form-control mt-2" id="exampleFormControlInput1" type="tel" name="cel" placeholder="Telefono">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="tel" name="cel" placeholder="Telefono *">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="calle" placeholder="calle">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="calle" placeholder="calle *">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="colonia" placeholder="Colonia">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="colonia" placeholder="Colonia *">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="cp" placeholder="CP">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="cp" placeholder="CP *">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="ciudad" placeholder="Ciudad">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="ciudad" placeholder="Ciudad *">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="estado" placeholder="Estado">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="estado" placeholder="Estado *">
                 </div>
                 <div class="mb-3">
-                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="referencia" placeholder="Referencia">
+                    <input class="form-control mt-2" id="exampleFormControlInput1" type="text" name="referencia" placeholder="Referencia *">
                 </div>
                 <div class="col-12">
                     <button type="submit" name="direccion" class="btn btn-primary mt-2">Ir al siguiente paso<i class="far fa-paper-plane"></i></button>
                 </div>
-            </div>
+            <span class="mt-2">
             <?php
-            }
-            ?>
+            $add = $_GET['add'];
+            print $add;
+            ?></span>
+            </div>
         </form>
+        <?php } ?>
     </body>
 
     <footer>
