@@ -12,6 +12,7 @@
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/validacion-from.js"></script>
     <title>Registro</title>
 </head>
 <div class="container-fluid">
@@ -19,6 +20,7 @@
         <div id="contenedor">
             <?php
                 require 'menu.php';
+                $pasos = $_GET['pasos'];
             ?>
         </div>
         <section>    
@@ -26,13 +28,14 @@
                         <div class="card p-3">      
                             <h5 class="titulo mt-2">Crea una nueva cuenta</h5>
                             <div id="formulariocone">  
-                                <form action="add-registro.php" method="post">
-                                <input class="form-control me-1 " type="name" name="name" placeholder=" Nombre de Usuario">
-                                <input class="form-control me-1 mt-3" type="email" name="email" placeholder="Correo Electrónico">
-                                <input class="form-control me-1 mt-3" type="password" name="pasword" placeholder="contrasena">
-                                <input class="form-control me-1 mt-3" type="password" name="pasword2" placeholder=" verifica contrasena">
+                                <form action="add-registro.php" id="formulario" method="post" >
+                                <input style="display: none;" name="pasos" value="<?php print $pasos?>">
+                                <input class="form-control me-1 " type="name" name="name" id="name" placeholder=" Nombre de Usuario">
+                                <input class="form-control me-1 mt-3" type="email" name="email" id="email" placeholder="Correo Electrónico">
+                                <input class="form-control me-1 mt-3" type="password" name="password" id="password"  placeholder="contrasena">
+                                <input class="form-control me-1 mt-3" type="password" name="password1" id="password1" placeholder=" verifica contrasena">
                                 <button type="submit" name="registrar" class="btn btn-secondary mt-3">Registrar  <i class="far fa-paper-plane"></i></button>
-                                <samp class="text-danger">
+                                <br><samp class="text-danger">
                                     <?php
                                         $error = $_GET['error'];
                                         print $error;
@@ -41,8 +44,6 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
-                </div>
             </div>
         </section>
     </body>

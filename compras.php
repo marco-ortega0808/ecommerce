@@ -1,5 +1,5 @@
 <?php
-    require 'validar-sesion-iniciada.php'
+    require 'validar-sesion.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,31 +45,32 @@
                         <th scope="col">Estado</th>
                         </tr>
                     </thead>
-                </table>
+                </table></div>
         <?php
             require_once 'conbd.php';
-
-            $query = $mbd -> prepare("SELECT * FROM compras");
+            $user = $arry[0];
+            
+            $query = $mbd -> prepare("SELECT * FROM compras WHERE idUser = :id");
+            $query -> bindParam(':id', $user);
             $query -> execute();
             $row = $query -> rowCount();
-            
             $buy = $query -> fetch();
-            if ($row >0 && $arry[0] == $buy[4]) {
+            
+            if ($row > 0 && $arry[0] == $buy[4]) {
                 
             for ($i = 0; $i < $row;  $i++){
         ?>
             <table class="table text-center table ">
-                    <tbody>
-                        <tr>
-                        <td ><img style="width: 115px;" src="<?php print $buy[3]?>" alt=""></td>
-                        <td><?php print $buy[1]?></td>
-                        <td>$<?php print $buy[2]?></td>
-                        <td>1</td>
-                        <td class="text-success"> Pagado</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                <tbody>
+                    <tr>
+                    <td ><img style="width: 115px;" src="<?php print $buy[3]?>" alt=""></td>
+                    <td><?php print $buy[1]?></td>
+                    <td>$<?php print $buy[2]?></td>
+                    <td>1</td>
+                    <td class="text-success"> Pagado</td>
+                    </tr>
+                </tbody>
+            </table>
         <?php
             }
         }if ($row==0) {
@@ -83,8 +84,8 @@
             }
             ?> 
             <p class="h4 mb-3">Productos que puedén ser de su interés</p>
-        </div>
-        <div class="container-fluid">
+        
+        <!-- <div class="container-fluid"> -->
                 <div class="row">
                     <div class="col-sm-12 col-lg-4 relleno relleno-r mb-3">
                         <div class="card">
@@ -159,7 +160,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
     </body>
     <footer>
         <div class="row bg-dark">

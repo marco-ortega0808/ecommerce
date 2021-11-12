@@ -18,6 +18,7 @@
     <body>
         <?php
             require 'menu.php';
+            $pasos = $_GET['pasos'];
         ?>
         
         <section >    
@@ -26,6 +27,7 @@
                     <h5 class="titulo mt-3">Iniciar Sesión</h5>
                     <div id="formulariocone">  
                         <form action="validar-inicio-sesion.php" method="post">
+                        <input style="display: none;" name="pasos" value="<?php print $pasos?>">
                         <input class="form-control me-1" id="exampleFormControlInput1" type="email" name="email" placeholder="Correo Electrónico">
                         <input class="form-control me-1 mt-3" id="exampleFormControlInput1" type="password" name="password" placeholder="Contraseña">
                         <button type="submit" name="sesion" class="btn btn-secondary mt-2">Iniciar sesión <i class="far fa-paper-plane"></i></button>
@@ -38,6 +40,10 @@
                         </samp>
                         <p class="contraseña"></p>
                     </div>
+                </div>
+                <div class="text-center mt-3">
+                    <p class="h6">¿Eres nuevo en Teckno?</p>
+                    <a href="registro.php?pasos=<?php print $pasos?>" class="btn btn-secondary">Crear tu cuenta</a>
                 </div>
             </div>
         </section>

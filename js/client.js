@@ -46,7 +46,7 @@ async function handleSubmit(e) {
   if (error.type === "card_error" || error.type === "validation_error") {
     showMessage(error.message);
   } else {
-    showMessage("Error, accioón incorrecta.");
+    showMessage("Error, acción incorrecta.");
   }
 
   setLoading(false);
