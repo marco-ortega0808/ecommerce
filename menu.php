@@ -68,6 +68,7 @@
                         $query = $mbd -> prepare("SELECT * FROM carrito");
                         $query -> execute();
                         $row = $query -> rowCount();
+                        $res = $query->fetch();
                     ?>
                     <a href="carrito.php" class="nav-link active text-center">
                         <i class="fas fa-shopping-cart"></i> <?php print $row;?>
@@ -77,3 +78,8 @@
         </div>
     </div>
 </nav>
+<?php
+    $queryProduc = $mbd -> prepare("SELECT * FROM producto");
+    $queryProduc -> execute();
+    $producto = $queryProduc->fetch();
+?>

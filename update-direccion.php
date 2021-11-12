@@ -12,7 +12,11 @@
         $ciudad = $_POST['ciudad'];
         $estado = $_POST['estado'];
         $referencia = $_POST['referencia'];
-        
+        if ($name == null || $lastname == null || $cel == null || $calle == null || $colonia == null || $cp == null || $ciudad == null || $estado == null || $referencia == null) { 
+            
+            header('location:direccion.php?add=Es necesario que llene todos los campos');
+    
+        }else {
         $query = $mbd -> prepare("UPDATE direccion SET name = :name, lastname = :lastname, tel = :cel, calle = :calle, colonia = :colonia, cp = :cp, ciudad = :ciudad, estado = :estado, referencia = :referencia WHERE id = :id ");
         
         $query -> bindValue(':name', $name);
@@ -28,5 +32,6 @@
 
         $query -> execute();
         header('location:pago.php');
+        }
     }
 ?>

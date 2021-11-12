@@ -18,7 +18,9 @@
         <body>
         <?php
             require 'menu.php';
-        ?>
+        ?><?php
+        $price = $producto[2];
+    ?>
         <section>
             <div class="container-fluid">
                 <div class="row">
@@ -45,7 +47,7 @@
                                 <div class="col-sm-12 col-lg-12 col-md-12 relleno mb-3">
                                     <h1 class="titulo-productos border-bottom border-3 border-secondary row-sm mt-1">Hardware</h1>
                                     <div class="card">
-                                        <a href="produc-info.php">
+                                        <a href="produc-info.php?prece=<?php print $price; ?>">
                                             <div class="row g-0">
                                                 <div class="col-md-4">
                                                     <img src="img/TarjetaG.jpg" class="img-fluid rounded-start" alt="GTX 1660">
@@ -63,7 +65,11 @@
                                                             </ul>
                                                             <div class="card-texto">
                                                                 <h6 class="text-decoration-line-through">$8000</h6>
-                                                                <label for="preci">$7,500</label>
+                                                                <label for="preci">
+                                                                    <?php
+                                                                        print $price;
+                                                                    ?>
+                                                                </label>
                                                             </div>
                                                         </div>
                                                         <p class="card-text"><small class="text-muted">4 disponibles</small></p>
@@ -75,7 +81,7 @@
                                 </div>
                                 <div class="col-sm-12 col-lg-12 col-md-12 relleno mb-3">
                                     <div class="card">
-                                        <a href="produc-info.php">
+                                        <a href="produc-info.php?prece=<?php print $price; ?>">
                                             <div class="row g-0">
                                                 <div class="col-md-4">
                                                     <img src="img/procesador.jpg" class="img-fluid rounded-start" alt="Alcohol isopropilico">
@@ -93,7 +99,11 @@
                                                             </ul>
                                                             <div class="card-texto">
                                                                 <h6 class="text-decoration-line-through">$8000</h6>
-                                                                <label for="preci">$7,500</label>
+                                                                <label for="preci">
+                                                                    <?php
+                                                                        print $price;
+                                                                    ?>
+                                                                </label>
                                                             </div>
                                                         </div>
                                                         <p class="card-text"><small class="text-muted">5 disponibles</small></p>
@@ -105,7 +115,7 @@
                                 </div>
                                 <div class="col-sm-12 relleno col-lg-12 col-md-12">
                                     <div class="card mb-3">
-                                        <a href="produc-info.php">
+                                        <a href="produc-info.php?prece=<?php print $price; ?>">
                                             <div class="row g-0">
                                                 <div class="col-md-4">
                                                     <img src="img/ram.jpg" class="img-fluid rounded-start" alt="Alcohol isopropilico">
@@ -123,7 +133,11 @@
                                                             </ul>
                                                             <div class="card-texto">
                                                                 <h6 class="text-decoration-line-through">$8000</h6>
-                                                                <label for="preci">$7,500</label>
+                                                                <label for="preci">
+                                                                    <?php
+                                                                        print $price;
+                                                                    ?>
+                                                                </label>
                                                             </div>
                                                         </div>
                                                         <p class="card-text"><small class="text-muted">50 disponibles</small></p>
@@ -141,7 +155,7 @@
                                 <div class="col-sm-12 col-lg-12 col-md-12 relleno mb-3">
                                     <h1 class="titulo-productos border-bottom border-3 border-secondary mt-1">Consumibles</h1>
                                     <div class="card">
-                                        <a href="produc-info.php">
+                                        <a href="produc-info.php?prece=<?php print $price; ?>">
                                             <div class="row g-0">
                                                 <div class="col-md-4">
                                                     <img src="img/pasta.jpg" class="img-fluid rounded-start" alt="GTX 1660">
@@ -159,7 +173,11 @@
                                                             </ul>
                                                             <div class="card-texto">
                                                                 <h6 class="text-decoration-line-through">$8000</h6>
-                                                                <label for="preci">$7,500</label>
+                                                                <label for="preci">
+                                                                    <?php
+                                                                        print $price;
+                                                                    ?>
+                                                                </label>
                                                             </div>
                                                         </div>
                                                         <p class="card-text"><small class="text-muted">10 disponibles</small></p>
@@ -171,7 +189,7 @@
                                 </div>
                                 <div class="col-sm-12 col-lg-12 col-md-12 relleno mb-3">
                                     <div class="card">
-                                        <a href="produc-info.php">
+                                        <a href="produc-info.php?prece=<?php print $price; ?>">
                                             <div class="row g-0">
                                                 <div class="col-md-4">
                                                     <img src="img/aire.jpg" class="img-fluid rounded-start" alt="Alcohol isopropilico">
@@ -189,7 +207,11 @@
                                                             </ul>
                                                             <div class="card-texto">
                                                                 <h6 class="text-decoration-line-through">$8000</h6>
-                                                                <label for="preci">$7,500</label>
+                                                                <label for="preci">
+                                                                    <?php
+                                                                        print $price;
+                                                                    ?>
+                                                                </label>
                                                             </div>
                                                         </div>
                                                         <p class="card-text"><small class="text-muted">15 disponibles</small></p>
@@ -201,7 +223,7 @@
                                 </div>
                                 <div class="col-sm-12 relleno col-lg-12 col-md-12">
                                     <div class="card mb-3">
-                                        <a href="produc-info.php">
+                                        <a href="produc-info.php?prece=<?php print $price; ?>">
                                             <div class="row g-0">
                                                 <div class="col-md-4">
                                                     <img src="img/alcohol.jpg" class="img-fluid rounded-start" alt="Alcohol isopropilico">
@@ -219,7 +241,11 @@
                                                             </ul>
                                                             <div class="card-texto">
                                                                 <h6 class="text-decoration-line-through">$8000</h6>
-                                                                <label for="preci">$7,500</label>
+                                                                <label for="preci">
+                                                                    <?php
+                                                                        print $price;
+                                                                    ?>
+                                                                </label>
                                                             </div>
                                                         </div>
                                                         <p class="card-text"><small class="text-muted">2 disponibles</small></p>
@@ -237,7 +263,7 @@
                                 <div class="col-sm-12 col-lg-12 col-md-12 relleno mb-3">
                                     <h1 class="titulo-productos border-bottom border-3 border-secondary mt-1">Servicios</h1>
                                     <div class="card">
-                                        <a href="produc-info.php">
+                                        <a href="produc-info.php?prece=<?php print $price; ?>">
                                             <div class="row g-0">
                                                 <div class="col-md-4">
                                                     <img src="img/correctivo.jpg" class="img-fluid rounded-start" alt="GTX 1660">
@@ -255,7 +281,11 @@
                                                             </ul>
                                                             <div class="card-texto">
                                                                 <h6 class="text-decoration-line-through">$8000</h6>
-                                                                <label for="preci">$7,500</label>
+                                                                <label for="preci">
+                                                                    <?php
+                                                                        print $price;
+                                                                    ?>
+                                                                </label>
                                                             </div>
                                                         </div>
                                                         <p class="card-text"><small class="text-muted">¡Ya disponible!</small></p>
@@ -267,7 +297,7 @@
                                 </div>
                                 <div class="col-sm-12 col-lg-12 col-md-12 relleno mb-3">
                                     <div class="card">
-                                        <a href="produc-info.php">
+                                        <a href="produc-info.php?prece=<?php print $price; ?>">
                                             <div class="row g-0">
                                                 <div class="col-md-4">
                                                     <img src="img/mpreventivo.jpg" class="img-fluid rounded-start" alt="Alcohol isopropilico">
@@ -285,7 +315,11 @@
                                                             </ul>
                                                             <div class="card-texto">
                                                                 <h6 class="text-decoration-line-through">$8000</h6>
-                                                                <label for="preci">$7,500</label>
+                                                                <label for="preci">
+                                                                    <?php
+                                                                        print $price;
+                                                                    ?>
+                                                                </label>
                                                             </div>
                                                         </div>
                                                         <p class="card-text"><small class="text-muted">¡Ya disponible!</small></p>

@@ -67,11 +67,22 @@
                                     </ul>
                                     <div class="card-texto">
                                         <h6 class="text-decoration-line-through">$8000</h6>
-                                        <label for="preci">$7,500</label>
+                                        <label for="preci">
+                                            $
+                                            <?php
+                                                $price = $producto[2];
+                                                print $price;
+                                            ?>
+                                        </label>
                                     </div>
                                 </div>
                                 <p class="card-text"><small class="text-muted">4 disponibles</small></p>
-                                <a type="button" class="btn btn-primary mb-1" href="add-car.php?name=Procesador AMD Ryzen 5 3600&price=7500&img=img/procesador.jpg"><i class="fas fa-shopping-cart"></i> Agregar al carrito</a>
+                                <form action="add-car.php" method="post">
+                                    <input type="text" name="name" value="Procesador AMD Ryzen 5 3600" style="display: none;">
+                                    <input type="text" name="img" value="img/procesador.jpg" style="display: none;">
+                                    <input type="text" name="price" value="<?php print $price; ?>" style="display: none;">
+                                    <button type="submit" name="sesion" class="btn btn-primary mb-1"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
+                                </form>
                                 <?php
                                     $query = $_GET['query'];
                                     print $query;

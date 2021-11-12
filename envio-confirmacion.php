@@ -16,12 +16,13 @@
     $idPay = $_GET['payment_intent'];
     print $stausPay;
     print $idPay;
+    print var_dump ($res[2]);
 
     if ($stausPay == "succeeded") {
 
         $answer = $mbd->prepare("INSERT INTO compras (name, price, img, idUser) VALUES (:nombre, :precio, :imagen, :user)");
         $answer -> bindValue(':nombre', $id[1]);
-        $answer -> bindValue(':precio', $id[2]);
+        $answer -> bindValue(':precio', $producto[2]);
         $answer -> bindValue(':imagen', $id[3]);
         $answer -> bindValue(':user', $user);
         $answer -> execute();
@@ -64,7 +65,7 @@
             <li>Tipo de interfaz: PCI Express x16 3.0</li>
             <li>HDMI: 1x, DVI-I: 0x, DisplayPort: 1x</li>
             </ul> 
-            <label>Precio: $7,500</label><br>
+            <label>Precio: ".$res[2]."</label><br>
             <p>En caso de aclaraciones sobre su pago le proporcionamos su ID de pago: ".$idPay."<p>
             <a href='http://teckno-productos.test/compras.php'>Lista de productos comprados</a>
             </p>";

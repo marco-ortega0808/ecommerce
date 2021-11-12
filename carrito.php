@@ -30,6 +30,20 @@
             </div>
         </div>
 <div class="container-fluid">
+        <div class="row mt-2">
+            <table class="table text-center table table-striped table-sm table-lx">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Eliminar</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
         <?php
             require_once 'conbd.php';
 
@@ -42,17 +56,8 @@
                 if ($row>0) {
                     
         ?>
-            <div class="row mt-2">
+        <div class="row mt-2">  
                 <table class="table text-center table table-striped table-sm table-lx">
-                    <thead>
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Imagen</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Eliminar</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <tr>
                         <th scope="row"><?php print $array[0]?></th>
@@ -62,6 +67,12 @@
                         <td> <a class="btn btn-danger" href="delet-product.php?id=<?php print $array[0]?>"><i class="fas fa-trash-alt"></i></a></td>
                         </tr>
                 </table>
+            </div>
+                <?php
+                    $respuesta = $_GET['query'];
+                    print $respuesta;
+                    if ($row>0) {
+                ?>
                 <div class="row justify-content-lg-end mb-3">
                     <div class="card  col-lg-4">
                         <h5 class="row card-header">Realice su pago</h5>
@@ -75,28 +86,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
-                <?php
-                    $respuesta = $_GET['query'];
-                    print $respuesta;
-                ?>
         <?php
+                    }
             }
         }if ($row==0) {
             
         ?>  
-        <table class="table text-center table table-striped table-sm">
-            <thead>
-                <tr>
-                <th scope="col">#</th>
-                <th scope="col">Imagen</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Eliminar</th>
-                </tr>
-            </thead>
-            
-        </table>
+        
         
         <div class="border-bottom mb-3">
             <p class="h4 text-center">Aún no tiene nada en el carrito</p>

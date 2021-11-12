@@ -1,6 +1,12 @@
 <?php
 
 require 'vendor/autoload.php';
+require_once 'conbd.php';
+$query = $mbd -> prepare("SELECT * FROM carrito");
+$query -> execute();
+$row = $query -> rowCount();
+$res = $query->fetch();
+$price = $res[2];
 
 // This is a sample test API key.
 \Stripe\Stripe::setApiKey('sk_test_51JpwJSIA690oC2KUkoYVbdEBLUBNcWAgKl64P6CljHxVWuVWlNDIzDfpGHlVIZtRzqo5ynCWPtqysDxQTmM4bf6K00KSJczk0s');
@@ -15,7 +21,7 @@ try {
 
     // Create a PaymentIntent with amount and currency
     $paymentIntent = \Stripe\PaymentIntent::create([
-        'amount' => 775099,
+        'amount' => $price,
         'currency' => 'mxn',
         'payment_method_types' => ['card'],
     ]);
