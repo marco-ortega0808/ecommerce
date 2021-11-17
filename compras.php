@@ -45,7 +45,6 @@
                         <th scope="col">Estado</th>
                         </tr>
                     </thead>
-                </table></div>
         <?php
             require_once 'conbd.php';
             $user = $arry[0];
@@ -54,13 +53,11 @@
             $query -> bindParam(':id', $user);
             $query -> execute();
             $row = $query -> rowCount();
-            $buy = $query -> fetch();
             
-            if ($row > 0 && $arry[0] == $buy[4]) {
-                
             for ($i = 0; $i < $row;  $i++){
+            $buy = $query -> fetch();
+                if ($row > 0 && $arry[0] == $buy[4]) {
         ?>
-            <table class="table text-center table ">
                 <tbody>
                     <tr>
                     <td ><img style="width: 115px;" src="<?php print $buy[3]?>" alt=""></td>
@@ -70,7 +67,6 @@
                     <td class="text-success"> Pagado</td>
                     </tr>
                 </tbody>
-            </table>
         <?php
             }
         }if ($row==0) {
@@ -83,83 +79,49 @@
             <?php
             }
             ?> 
+
+</table></div>
             <p class="h4 mb-3">Productos que puedén ser de su interés</p>
         
         <!-- <div class="container-fluid"> -->
                 <div class="row">
-                    <div class="col-sm-12 col-lg-4 relleno relleno-r mb-3">
-                        <div class="card">
-                            <a href="produc-info.php">
+                    
+                <?php
+                        $product = $mbd -> prepare("SELECT * FROM producto ORDER BY name DESC");
+                        $product -> execute();
+                        for ($i=0; $i < 3; $i++) { 
+                        $productoSelec = $product->fetch();
+                    ?>
+                    <div class="col-sm-12 col-lg-4 relleno mb-3 card">
+                        <div class="p-2">
+                            <a href="produc-info.php?id=<?php print $productoSelec[0] ?>" >
                                 <div class="row g-0">
+                                    
                                     <div class="col-md-4">
-                                        <img src="img/TarjetaG.jpg" class="img-fluid rounded-start" alt="GTX 1660">
+                                        <img src="<?php print $productoSelec[10] ?> " class="img-fluid rounded-start" alt="GTX 1660">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h5 class="card-title">GTX 1660</h5>
-                                            <p class="card-text text-dark">Una gran opción para que pueda juegar sin ningún problema.</p>
+                                            <h5 class="card-title"><?php print $productoSelec[1] ?> </h5>
+                                            <p class="card-text text-dark"><?php print $productoSelec[3] ?> </p>
                                             <ul class="card-text text-dark">
-                                                <li>6 nucleos</li>
-                                                <li>12 hilos</li>
-                                                <li>3.6GHz a 4.2GHz Boost</li>
-                                                <li>4 Mb de cache</li>
+                                                <li><?php print $productoSelec[5] ?> </li>
+                                                <li><?php print $productoSelec[6] ?> </li>
+                                                <li><?php print $productoSelec[7] ?> </li>
+                                                <li><?php print $productoSelec[8] ?> </li>
                                             </ul>
-                                            <p class="card-text"><small class="text-muted">¡Ya disponible!</small></p>
-                                            </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-4 relleno mb-3">
-                        <div class="card">
-                            <a href="produc-info.php">
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                        <img src="img/procesador.jpg" class="img-fluid rounded-start" alt="Alcohol isopropilico">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Alcohol isopropilico</h5>
-                                            <p class="card-text text-dark">Uno de los productos de limpiesa más necesarios.</p>
-                                            <ul class="card-text text-dark">
-                                                <li>6 nucleos</li>
-                                                <li>12 hilos</li>
-                                                <li>3.6GHz a 4.2GHz Boost</li>
-                                                <li>4 Mb de cache</li>
-                                            </ul>
-                                            <p class="card-text"><small class="text-muted">¡Ya disponible!</small></p>
                                         </div>
+                                        <p class="card-text"><small class="text-muted"><?php print $productoSelec[11] ?> diponibles</small></p>
                                     </div>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-12 relleno col-lg-4 relleno-l">
-                        <div class="card mb-3">
-                            <a href="produc-info.php">
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                        <img src="img/alcohol.jpg" class="img-fluid rounded-start" alt="Alcohol isopropilico">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Alcohol isopropilico</h5>
-                                            <p class="card-text text-dark">Uno de los productos de limpiesa más necesarios.</p>
-                                            <ul class="card-text text-dark">
-                                                <li>6 nucleos</li>
-                                                <li>12 hilos</li>
-                                                <li>3.6GHz a 4.2GHz Boost</li>
-                                                <li>4 Mb de cache</li>
-                                            </ul>
-                                            <p class="card-text"><small class="text-muted">¡Ya disponible!</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    <?php
+                        }
+                    ?>
                 </div>
+            </div>
     </body>
     <footer>
         <div class="row bg-dark">

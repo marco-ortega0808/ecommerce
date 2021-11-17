@@ -2,11 +2,12 @@
 
 require 'vendor/autoload.php';
 require_once 'conbd.php';
-$query = $mbd -> prepare("SELECT * FROM carrito");
+$query = $mbd -> prepare("SELECT * FROM pagos ORDER BY monto DESC");
 $query -> execute();
 $row = $query -> rowCount();
 $res = $query->fetch();
-$price = $res[2];
+$price = $res[1] * 100;
+
 
 // This is a sample test API key.
 \Stripe\Stripe::setApiKey('sk_test_51JpwJSIA690oC2KUkoYVbdEBLUBNcWAgKl64P6CljHxVWuVWlNDIzDfpGHlVIZtRzqo5ynCWPtqysDxQTmM4bf6K00KSJczk0s');

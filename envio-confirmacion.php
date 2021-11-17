@@ -9,29 +9,42 @@
 
     $produc = $mbd -> prepare("SELECT * FROM carrito");
     $produc -> execute();
-    $id = $produc->fetch();
-     print var_dump($id);
+    $row = $produc -> rowCount();
+
+    
     $user = $arry[0];
     $stausPay = $_GET['redirect_status'];
     $idPay = $_GET['payment_intent'];
-    print $stausPay;
-    print $idPay;
-    print var_dump ($res[2]);
+    
 
     if ($stausPay == "succeeded") {
 
+        for ($i = 0; $i < $row;  $i++){
+            $id = $produc->fetch();
+            $total += $id[2];
         $answer = $mbd->prepare("INSERT INTO compras (name, price, img, idUser) VALUES (:nombre, :precio, :imagen, :user)");
         $answer -> bindValue(':nombre', $id[1]);
-        $answer -> bindValue(':precio', $producto[2]);
+        $answer -> bindValue(':precio', $id[2]);
         $answer -> bindValue(':imagen', $id[3]);
         $answer -> bindValue(':user', $user);
         $answer -> execute();
 
         $query = $mbd -> prepare("DELETE FROM carrito WHERE id = :id ");
-        
         $query -> bindValue(':id', $id[0]);
+        $query ->execute();
 
-        $query->execute();
+        $consulta = $mbd -> prepare("SELECT * FROM producto WHERE id = :idproduc ");
+        $consulta -> bindValue(':idproduc', $id[4]);
+        $consulta ->execute();
+        $produ = $consulta->fetch();
+        
+        $resta = $produ[11] - 1;
+        print var_dump($resta);
+        $delet = $mbd -> prepare("UPDATE producto SET available = :disponible WHERE id = :iddelet ");
+        $delet -> bindValue(':iddelet', $id[4]);
+        $delet -> bindValue(':disponible', $resta);
+        $delet ->execute();
+        }
         require ('PHPMailer/src/Exception.php');
         require ('PHPMailer/src/PHPMailer.php');
         require ('PHPMailer/src/SMTP.php');
@@ -65,7 +78,7 @@
             <li>Tipo de interfaz: PCI Express x16 3.0</li>
             <li>HDMI: 1x, DVI-I: 0x, DisplayPort: 1x</li>
             </ul> 
-            <label>Precio: ".$res[2]."</label><br>
+            <label>Precio: ".$total."</label><br>
             <p>En caso de aclaraciones sobre su pago le proporcionamos su ID de pago: ".$idPay."<p>
             <a href='http://teckno-productos.test/compras.php'>Lista de productos comprados</a>
             </p>";
