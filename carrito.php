@@ -59,7 +59,7 @@
                             <th scope="row"><?php print $array[0]?></th>
                             <td ><img style="width: 115px;" src="<?php print $array[3]?>" alt=""></td>
                             <td><?php print $array[1]?></td>
-                            <td>$<?php print $array[2]?></td>
+                            <td>$<?php $convercion = $array[2]; $moneda = number_format($convercion, 2, '.', ','); print $moneda?></td>
                             <td> 
                                 <a class="btn btn-danger" href="delet-product.php?id=<?php print $array[0]?>"><i class="fas fa-trash-alt"></i></a>
                             </td>
@@ -78,21 +78,17 @@
                         <h5 class="row card-header">Ingrese su cupón</h5>
                         <div class=" row card-body">
                             <script>
-                                document.addEventListener("DOMContentLoaded", function() {
-                                document.getElementById("descuento").addEventListener('submit', validarFormulario); 
-                                });
-                                function validarFormulario(evento) {
-                                evento.preventDefault();
-                                var cupon = document.getElementById('cupon').value;
-                                if(cupon.length == 0) {
-                                    alert('Ingrese cupón');
-                                    return;
+                                function validarfor(){
+
+                                    var cupon = document.getElementById("cupon").value;
+                                    if (cupon == ""){
+                                        alert("Error: ingrese cupon.");
+                                        return false;
+                                    }
                                 }
-                                this.submit();
-                                
-                                }
+
                             </script>
-                            <form action="carrito.php" method="post" id="descuento">
+                            <form action="carrito.php" method="post" id="descuento" onSubmit="return validarfor();">
                                 <input type="text" name="cupon" id="cupon" class="col-12 mt-2" placeholder="Ejem: Des-20-const">
                                 <button type="submit" name="cupones" id="btn-envio" class="btn btn-primary mt-2 col-12">Ingresar</button>
                                 <div id="aviso"></div>
@@ -109,22 +105,22 @@
                             <table class="text-center">
                                 <tr>
                                     <td>Subtotal</td>
-                                    <td>$ <?php print $total ?>
+                                    <td>$ <?php  $moneda = number_format($total, 2, '.', ','); print $moneda?>
                                     </td>
                                 </tr>
                                 <?php
                                 if (isset($_POST['cupones'])){
                                     $cupon = $_POST['cupon'];
-                                    print $cupon;
                                     $resultadoCupon = $mbd -> prepare("SELECT * FROM cupones WHERE codigo = :cupon");
                                     $resultadoCupon -> bindParam(':cupon', $cupon);
                                     $resultadoCupon -> execute();
                                     $cuenta = $resultadoCupon-> rowCount();
                                     $arreglo = $resultadoCupon->fetch();
                                     
-                                    if($cuenta == 0){
-                                        header('location:carrito.php?error=Cupon invalido');
-                                    }else{
+                                    if($cuenta == 0){?>
+                                        <script>alert("Error: ingrese cupon."); </script>
+                                        <?php
+                                    }if($cuenta == 1){
                                     if($arreglo[1] == $arreglo[1]){
 
                                 ?>
@@ -132,20 +128,21 @@
                                     <td><spam class="h6 ">Descuent del <?php print $arreglo[3] ?>%</spam></td>
                                     <td>$ <?php 
                                         $descuento = $total * $arreglo[2];
-                                        print $descuento;
+                                        
+                                        $moneda = number_format($descuento, 2, '.', ','); print $moneda;
                                         $total = $total - $descuento; 
                                         ?>
                                     </td>
                                 </tr>
                                 <?php
+                                            }
                                         }
                                     }
-                                }
                                 ?>
 
                                 <tr class="mt-2">
                                     <td><spam class="h6 ">Total (IVA incluido)</spam></td>
-                                    <td>$ <?php print $total ?></td>
+                                    <td>$ <?php  $moneda = number_format($total, 2, '.', ','); print $moneda?></td>
                                 </tr>
                             </table>
                             <?php if($arry[0] == 0){ ?>
