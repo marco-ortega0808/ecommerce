@@ -12,8 +12,8 @@
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/style.css">
-        <script src="https://js.stripe.com/v3/"></script>
         <script src="js/client.js" defer></script>
+        <!-- <script src="js/validacion-from.js" defer></script> -->
 </head>
 <div class="container-fluid">
     <body>
@@ -41,58 +41,132 @@
                     <th scope="col">Eliminar</th>
                     </tr>
                 </thead>
-            </table>
-        </div>
 
-        <?php
-            require_once 'conbd.php';
+                <?php
+                    require_once 'conbd.php';
 
-            $query = $mbd -> prepare("SELECT * FROM carrito");
-            $query -> execute();
-            $row = $query -> rowCount();
+                    $query = $mbd -> prepare("SELECT * FROM carrito");
+                    $query -> execute();
+                    $row = $query -> rowCount();
 
-            for ($i = 0; $i < $row;  $i++){
-                $array = $query -> fetch();
-                if ($row>0) {
-                    
-        ?>
-        <div class="row mt-2">  
-                <table class="table text-center table table-striped table-sm table-lx">
+                    if ($row>0) {
+                    for ($i = 0; $i < $row;  $i++){
+                        $array = $query -> fetch();
+                        $total += $array[2];
+                ?>
                     <tbody>
                         <tr>
-                        <th scope="row"><?php print $array[0]?></th>
-                        <td ><img style="width: 115px;" src="<?php print $array[3]?>" alt=""></td>
-                        <td><?php print $array[1]?></td>
-                        <td>$<?php print $array[2]?></td>
-                        <td> <a class="btn btn-danger" href="delet-product.php?id=<?php print $array[0]?>"><i class="fas fa-trash-alt"></i></a></td>
+                            <th scope="row"><?php print $array[0]?></th>
+                            <td ><img style="width: 115px;" src="<?php print $array[3]?>" alt=""></td>
+                            <td><?php print $array[1]?></td>
+                            <td>$<?php print $array[2]?></td>
+                            <td> 
+                                <a class="btn btn-danger" href="delet-product.php?id=<?php print $array[0]?>"><i class="fas fa-trash-alt"></i></a>
+                            </td>
                         </tr>
-                </table>
-            </div>
+                    </tbody>
                 <?php
+            }
                     $respuesta = $_GET['query'];
                     print $respuesta;
-                    if ($row>0) {
                 ?>
+                </table>
+            </div>
+                <!-- Chekout -->
                 <div class="row justify-content-lg-end mb-3">
+                    <div class="card col-lg-3">
+                        <h5 class="row card-header">Ingrese su cupón</h5>
+                        <div class=" row card-body">
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                document.getElementById("descuento").addEventListener('submit', validarFormulario); 
+                                });
+                                function validarFormulario(evento) {
+                                evento.preventDefault();
+                                var cupon = document.getElementById('cupon').value;
+                                if(cupon.length == 0) {
+                                    alert('Ingrese cupón');
+                                    return;
+                                }
+                                this.submit();
+                                
+                                }
+                            </script>
+                            <form action="carrito.php" method="post" id="descuento">
+                                <input type="text" name="cupon" id="cupon" class="col-12 mt-2" placeholder="Ejem: Des-20-const">
+                                <button type="submit" name="cupones" id="btn-envio" class="btn btn-primary mt-2 col-12">Ingresar</button>
+                                <div id="aviso"></div>
+                                <?php
+                                    $res = $_GET['error'];
+                                    print $res;
+                                    ?>
+                            </form>
+                        </div>
+                    </div>
                     <div class="card  col-lg-4">
                         <h5 class="row card-header">Realice su pago</h5>
                         <div class=" row card-body">
-                            <p class="col-6">Subtotal</p>
-                            <p class="col-6">$ <?php print $array[2] ?></p>
-                            <h5 class="card-title col-6">Total (IVA incluido)</h5>
-                            <p class="col-6">$ <?php print $array[2]?></p>
-                            <a class="btn btn-primary mt-2" href="direccion.php?pasos=1">Ir al siguiente paso</a>
+                            <table class="text-center">
+                                <tr>
+                                    <td>Subtotal</td>
+                                    <td>$ <?php print $total ?>
+                                    </td>
+                                </tr>
+                                <?php
+                                if (isset($_POST['cupones'])){
+                                    $cupon = $_POST['cupon'];
+                                    print $cupon;
+                                    $resultadoCupon = $mbd -> prepare("SELECT * FROM cupones WHERE codigo = :cupon");
+                                    $resultadoCupon -> bindParam(':cupon', $cupon);
+                                    $resultadoCupon -> execute();
+                                    $cuenta = $resultadoCupon-> rowCount();
+                                    $arreglo = $resultadoCupon->fetch();
+                                    
+                                    if($cuenta == 0){
+                                        header('location:carrito.php?error=Cupon invalido');
+                                    }else{
+                                    if($arreglo[1] == $arreglo[1]){
 
+                                ?>
+                                <tr class="mt-2">
+                                    <td><spam class="h6 ">Descuent del <?php print $arreglo[3] ?>%</spam></td>
+                                    <td>$ <?php 
+                                        $descuento = $total * $arreglo[2];
+                                        print $descuento;
+                                        $total = $total - $descuento; 
+                                        ?>
+                                    </td>
+                                </tr>
+                                <?php
+                                        }
+                                    }
+                                }
+                                ?>
+
+                                <tr class="mt-2">
+                                    <td><spam class="h6 ">Total (IVA incluido)</spam></td>
+                                    <td>$ <?php print $total ?></td>
+                                </tr>
+                            </table>
+                            <?php if($arry[0] == 0){ ?>
+                            <a class="btn btn-primary mt-2" href="direccion.php?pasos=1">Ir al siguiente paso</a>
+                            <?php } if($arry[0] >= 1){ ?>
+                                <form action="add-pago.php" method="post">
+                                    <input type="text" style="display:none;" name="total" value="<?php print $total ?>"> 
+                                    <button type="submit" name="price" class="btn btn-primary mt-2 col-12">Ir al siguiente paso </button>
+                                </form>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
         <?php
-                    }
             }
-        }if ($row==0) {
+        if ($row==0) {
             
         ?>  
         
+        </table>
+            </div>
         
         <div class="border-bottom mb-3">
             <p class="h4 text-center">Aún no tiene nada en el carrito</p>
@@ -105,78 +179,40 @@
         
         <!-- <div class="container-fluid"> -->
                 <div class="row">
-                    <div class="col-sm-12 col-lg-4 relleno relleno-r mb-3">
-                        <div class="card">
-                            <a href="produc-info.php">
+                    <?php
+                        $product = $mbd -> prepare("SELECT * FROM producto ORDER BY name DESC");
+                        $product -> execute();
+                        for ($i=0; $i < 3; $i++) { 
+                        $productoSelec = $product->fetch();
+                    ?>
+                    <div class="col-sm-12 col-lg-4 relleno mb-3 card">
+                        <div class="p-2">
+                            <a href="produc-info.php?id=<?php print $productoSelec[0] ?>" >
                                 <div class="row g-0">
+                                    
                                     <div class="col-md-4">
-                                        <img src="img/TarjetaG.jpg" class="img-fluid rounded-start" alt="GTX 1660">
+                                        <img src="<?php print $productoSelec[10] ?> " class="img-fluid rounded-start" alt="GTX 1660">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h5 class="card-title">GTX 1660</h5>
-                                            <p class="card-text text-dark">Una gran opción para que pueda juegar sin ningún problema.</p>
+                                            <h5 class="card-title"><?php print $productoSelec[1] ?> </h5>
+                                            <p class="card-text text-dark"><?php print $productoSelec[3] ?> </p>
                                             <ul class="card-text text-dark">
-                                                <li>6 nucleos</li>
-                                                <li>12 hilos</li>
-                                                <li>3.6GHz a 4.2GHz Boost</li>
-                                                <li>4 Mb de cache</li>
+                                                <li><?php print $productoSelec[5] ?> </li>
+                                                <li><?php print $productoSelec[6] ?> </li>
+                                                <li><?php print $productoSelec[7] ?> </li>
+                                                <li><?php print $productoSelec[8] ?> </li>
                                             </ul>
-                                            <p class="card-text"><small class="text-muted">¡Ya disponible!</small></p>
-                                            </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-4 relleno mb-3">
-                        <div class="card">
-                            <a href="produc-info.php">
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                        <img src="img/procesador.jpg" class="img-fluid rounded-start" alt="Alcohol isopropilico">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Alcohol isopropilico</h5>
-                                            <p class="card-text text-dark">Uno de los productos de limpiesa más necesarios.</p>
-                                            <ul class="card-text text-dark">
-                                                <li>6 nucleos</li>
-                                                <li>12 hilos</li>
-                                                <li>3.6GHz a 4.2GHz Boost</li>
-                                                <li>4 Mb de cache</li>
-                                            </ul>
-                                            <p class="card-text"><small class="text-muted">¡Ya disponible!</small></p>
                                         </div>
+                                        <p class="card-text"><small class="text-muted"><?php print $productoSelec[11] ?> diponibles</small></p>
                                     </div>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-12 relleno col-lg-4 relleno-l">
-                        <div class="card mb-3">
-                            <a href="produc-info.php">
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                        <img src="img/alcohol.jpg" class="img-fluid rounded-start" alt="Alcohol isopropilico">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Alcohol isopropilico</h5>
-                                            <p class="card-text text-dark">Uno de los productos de limpiesa más necesarios.</p>
-                                            <ul class="card-text text-dark">
-                                                <li>6 nucleos</li>
-                                                <li>12 hilos</li>
-                                                <li>3.6GHz a 4.2GHz Boost</li>
-                                                <li>4 Mb de cache</li>
-                                            </ul>
-                                            <p class="card-text"><small class="text-muted">¡Ya disponible!</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    <?php
+                        }
+                    ?>
                 </div>
             </div>
     </body>

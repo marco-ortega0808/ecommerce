@@ -26,3 +26,16 @@ function validarFormulario(evento) {
     } */
     this.submit();
 }
+
+/* document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("descuento").addEventListener('submit', validarFormulario); 
+});
+function validarFormulario(evento) {
+  evento.preventDefault();
+  var cupon = document.getElementById('cupon').value;
+  if(cupon.length == 0) {
+    alert('Ingrese cupón');
+    return;
+  }
+  this.submit();
+} */
