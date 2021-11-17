@@ -62,7 +62,7 @@
                     <tr>
                     <td ><img style="width: 115px;" src="<?php print $buy[3]?>" alt=""></td>
                     <td><?php print $buy[1]?></td>
-                    <td>$<?php print $buy[2]?></td>
+                    <td>$<?php $convercion = $buy[2]; $moneda = number_format($convercion, 2, '.', ','); print $moneda?></td>
                     <td>1</td>
                     <td class="text-success"> Pagado</td>
                     </tr>

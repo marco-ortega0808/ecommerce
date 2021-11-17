@@ -73,7 +73,13 @@
                                                                 <label for="preci">$<?php $formatoMoneda = $producto -> price;  $moneda = number_format($formatoMoneda, 2, '.', ','); print $moneda?></label>
                                                             </div>
                                                         </div>
-                                                        <p class="card-text"><small class="text-muted"><?php print $producto -> available;  ?> disponibles</small></p>
+                                                        <?php if ($producto -> available >= 2){ ?>
+                                                            <p class="card-text"><small class="text-muted"><?php print $producto -> available;  ?> disponibles</small></p>
+                                                        <?php } if ($producto -> available == 1){ ?>
+                                                            <p class="card-text"><small class="text-muted"><?php print $producto -> available;  ?> disponible</small></p>
+                                                        <?php } if ($producto -> available == 0){ ?>
+                                                            <p class="card-text"><small class="text-muted"><?php print $producto -> available;  ?> disponibles</small></p>
+                                                        <?php }?>
                                                     </div>
                                                 </div>
                                             </div>

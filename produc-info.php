@@ -77,14 +77,30 @@
                                         </label>
                                     </div>
                                 </div>
-                                <p class="card-text"><small class="text-muted"><?php print $option[11] ?> disponibles</small></p>
-                                <form action="add-car.php" method="post">
-                                    <input type="text" name="id" value="<?php print $id ?>" style="display: none;">
-                                    <input type="text" name="name" value="<?php print $option[1]; ?>" style="display: none;">
-                                    <input type="text" name="img" value="<?php print $option[10]; ?>" style="display: none;">
-                                    <input type="text" name="price" value="<?php print $option[2]; ?>" style="display: none;">
-                                    <button type="submit" name="sesion" class="btn btn-primary mb-1"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
-                                </form>
+                                <?php if ($option[11] >= 2){ ?>
+                                    <p class="card-text"><small class="text-muted"><?php print $option[11] ?> disponibles</small></p>
+                                    <form action="add-car.php" method="post">
+                                        <input type="text" name="id" value="<?php print $id ?>" style="display: none;">
+                                        <input type="text" name="name" value="<?php print $option[1]; ?>" style="display: none;">
+                                        <input type="text" name="img" value="<?php print $option[10]; ?>" style="display: none;">
+                                        <input type="text" name="price" value="<?php print $option[2]; ?>" style="display: none;">
+                                        <button type="submit" name="sesion" class="btn btn-primary mb-1"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
+                                    </form>
+                                <?php } if ($option[11] == 1){ ?>
+                                    <p class="card-text"><small class="text-muted"><?php print $option[11] ?> disponible</small></p>
+                                    <form action="add-car.php" method="post">
+                                        <input type="text" name="id" value="<?php print $id ?>" style="display: none;">
+                                        <input type="text" name="name" value="<?php print $option[1]; ?>" style="display: none;">
+                                        <input type="text" name="img" value="<?php print $option[10]; ?>" style="display: none;">
+                                        <input type="text" name="price" value="<?php print $option[2]; ?>" style="display: none;">
+                                        <button type="submit" name="sesion" class="btn btn-primary mb-1"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
+                                    </form>
+                                <?php } if ($option[11] == 0){ ?>
+                                    <p class="card-text"><small class="text-muted">¡Por el momento no se encuentra disponible!</small></p>
+                                    <script> window.alert("Este producto no esta disponible"); swal("Oops!", "Something went wrong on the page!", "error");</script>
+                                    
+                                    </form>
+                                <?php } ?>
                                 <?php
                                     $query = $_GET['query'];
                                     print $query;
