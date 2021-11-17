@@ -14,6 +14,7 @@
                 $answer = $mbd -> prepare("SELECT * FROM registro WHERE email = :email");
                 $answer -> bindParam(':email', $usuario);
                 $answer -> execute();
+                $user = $answer-> rowCount();
                 $arry = $answer->fetch();
                 
                 if ($arry[2] != null && $arry[2] != "") {
@@ -78,8 +79,11 @@
         </div>
     </div>
 </nav>
+
 <?php
+    /*Consulta para los datos de los productos*/
     $queryProduc = $mbd -> prepare("SELECT * FROM producto");
     $queryProduc -> execute();
     $producto = $queryProduc->fetch();
+    $cont = $queryProduc -> rowCount();
 ?>

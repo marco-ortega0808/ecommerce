@@ -18,9 +18,7 @@
         <body>
         <?php
             require 'menu.php';
-        ?><?php
-        $price = $producto[2];
-    ?>
+        ?>
         <section>
             <div class="container-fluid">
                 <div class="row">
@@ -46,110 +44,46 @@
                             <div class="row">
                                 <div class="col-sm-12 col-lg-12 col-md-12 relleno mb-3">
                                     <h1 class="titulo-productos border-bottom border-3 border-secondary row-sm mt-1">Hardware</h1>
+                                    <?php
+                                        $allProduct = $mbd -> prepare("SELECT * FROM producto");
+                                        $allProduct -> execute();
+                                        $productos = $allProduct->fetchAll(PDO::FETCH_OBJ);
+                                        foreach($productos as $producto){
+                                    ?>
+                                    <div class="col-sm-12 col-lg-12 col-md-12 relleno mb-3">
                                     <div class="card">
-                                        <a href="produc-info.php?prece=<?php print $price; ?>">
+                                        <a href="produc-info.php?id=<?php print $producto -> id; ?>">
                                             <div class="row g-0">
                                                 <div class="col-md-4">
-                                                    <img src="img/TarjetaG.jpg" class="img-fluid rounded-start" alt="GTX 1660">
+                                                    <img src="<?php print $producto -> img; ?>" class="img-fluid rounded-start" alt="GTX 1660">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
-                                                        <h5 class="card-title">GTX 1660</h5>
+                                                        <h5 class="card-title"><?php print $producto -> name; ?></h5>
                                                         <div class="card-body">
                                                             <ul class="card-text text-dark">
-                                                                <li>Gráficos discretos memoria del adaptador: 6 GB</li>
-                                                                <li>Ancho de datos: 192 bit, Tipo de memoria: GDDR6</li>
-                                                                <li>Frecuencia Boost: 1860 MHz</li>
-                                                                <li>Tipo de interfaz: PCI Express x16 3.0</li>
-                                                                <li>HDMI: 1x, DVI-I: 0x, DisplayPort: 1x</li>
+                                                                <li><?php print $producto -> feature;  ?></li>
+                                                                <li><?php print $producto -> feature1;  ?></li>
+                                                                <li><?php print $producto -> feature2;  ?></li>
+                                                                <li><?php print $producto -> feature3;  ?></li>
+                                                                <li><?php print $producto -> feature4;  ?></li>
                                                             </ul>
                                                             <div class="card-texto">
-                                                                <h6 class="text-decoration-line-through">$8000</h6>
-                                                                <label for="preci">
-                                                                    <?php
-                                                                        print $price;
-                                                                    ?>
-                                                                </label>
+                                                                <h6 class="text-decoration-line-through">$<?php print $producto -> discount;  ?></h6>
+                                                                <label for="preci">$<?php $formatoMoneda = $producto -> price;  $moneda = number_format($formatoMoneda, 2, '.', ','); print $moneda?></label>
                                                             </div>
                                                         </div>
-                                                        <p class="card-text"><small class="text-muted">4 disponibles</small></p>
+                                                        <p class="card-text"><small class="text-muted"><?php print $producto -> available;  ?> disponibles</small></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 col-lg-12 col-md-12 relleno mb-3">
-                                    <div class="card">
-                                        <a href="produc-info.php?prece=<?php print $price; ?>">
-                                            <div class="row g-0">
-                                                <div class="col-md-4">
-                                                    <img src="img/procesador.jpg" class="img-fluid rounded-start" alt="Alcohol isopropilico">
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Ryzen 5600G</h5>
-                                                        <div class="card-body">
-                                                            <ul class="card-text text-dark">
-                                                                <li>Gráficos discretos memoria del adaptador: 6 GB</li>
-                                                                <li>Ancho de datos: 192 bit, Tipo de memoria: GDDR6</li>
-                                                                <li>Frecuencia Boost: 1860 MHz</li>
-                                                                <li>Tipo de interfaz: PCI Express x16 3.0</li>
-                                                                <li>HDMI: 1x, DVI-I: 0x, DisplayPort: 1x</li>
-                                                            </ul>
-                                                            <div class="card-texto">
-                                                                <h6 class="text-decoration-line-through">$8000</h6>
-                                                                <label for="preci">
-                                                                    <?php
-                                                                        print $price;
-                                                                    ?>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <p class="card-text"><small class="text-muted">5 disponibles</small></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 relleno col-lg-12 col-md-12">
-                                    <div class="card mb-3">
-                                        <a href="produc-info.php?prece=<?php print $price; ?>">
-                                            <div class="row g-0">
-                                                <div class="col-md-4">
-                                                    <img src="img/ram.jpg" class="img-fluid rounded-start" alt="Alcohol isopropilico">
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Memoria RAM XPG Spectrix D60G RGB Tungsten Grey DDR4</h5>
-                                                        <div class="card-body">
-                                                            <ul class="card-text text-dark">
-                                                                <li>Gráficos discretos memoria del adaptador: 6 GB</li>
-                                                                <li>Ancho de datos: 192 bit, Tipo de memoria: GDDR6</li>
-                                                                <li>Frecuencia Boost: 1860 MHz</li>
-                                                                <li>Tipo de interfaz: PCI Express x16 3.0</li>
-                                                                <li>HDMI: 1x, DVI-I: 0x, DisplayPort: 1x</li>
-                                                            </ul>
-                                                            <div class="card-texto">
-                                                                <h6 class="text-decoration-line-through">$8000</h6>
-                                                                <label for="preci">
-                                                                    <?php
-                                                                        print $price;
-                                                                    ?>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <p class="card-text"><small class="text-muted">50 disponibles</small></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                                <?php
+                                }
+                                ?>
+                                
                         <div class="">
                             <div class="row">
                                 <div class="col-sm-12 col-lg-12 col-md-12 relleno mb-3">

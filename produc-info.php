@@ -17,6 +17,11 @@
     <body>
         <?php
             require 'menu.php';
+            $id = $_GET['id'];
+            $productoSelect = $mbd -> prepare("SELECT * FROM producto WHERE id = :id");
+            $productoSelect -> bindParam(':id', $id);
+            $productoSelect -> execute();
+            $option = $productoSelect->fetch();
         ?>
         <section>
             <div class="row">
@@ -30,13 +35,13 @@
                             </div>
                             <div class="carousel-inner">
                               <div class="carousel-item active">
-                                <img src="img/procesador.jpg" class="d-block w-100" alt="...">
+                                <img src="<?php print $option[10]; ?>" class="d-block w-100" alt="...">
                               </div>
                               <div class="carousel-item">
-                                <img src="img/procesa.jpg" class="d-block w-100" alt="...">
+                                <img src="<?php print $option[12]; ?>" class="d-block w-100" alt="...">
                               </div>
                               <div class="carousel-item">
-                                <img src="img/proamd.jpg" class="d-block w-100" alt="...">
+                                <img src="<?php print $option[13]; ?>" class="d-block w-100" alt="...">
                               </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -55,32 +60,29 @@
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <div class="col-md-12">
                             <div class="card-body">
-                                <h1 class="card-title text-center">Procesador AMD Ryzen 5 3600</h1>
+                                <h1 class="card-title text-center"><?php print $option[1]; ?></h1>
                                 <div class="card-body">
-                                    <p>Boost / TDP 65W / Wraith Stealth (Requiere Tarjeta de Video) / 100-100000031BOX </p>
+                                    <p><?php print $option[3]; ?></p>
                                     <ul class="card-text text-dark">
-                                        <li>Gráficos discretos memoria del adaptador: 6 GB</li>
-                                        <li>Ancho de datos: 192 bit, Tipo de memoria: GDDR6</li>
-                                        <li>Frecuencia Boost: 1860 MHz</li>
-                                        <li>Tipo de interfaz: PCI Express x16 3.0</li>
-                                        <li>HDMI: 1x, DVI-I: 0x, DisplayPort: 1x</li>
+                                        <li><?php print $option[4] ?></li>
+                                        <li><?php print $option[5] ?></li>
+                                        <li><?php print $option[6] ?></li>
+                                        <li><?php print $option[7] ?></li>
+                                        <li><?php print $option[8] ?></li>
                                     </ul>
                                     <div class="card-texto">
-                                        <h6 class="text-decoration-line-through">$8000</h6>
+                                        <h6 class="text-decoration-line-through">$<?php print $option[9] ?></h6>
                                         <label for="preci">
-                                            $
-                                            <?php
-                                                $price = $producto[2];
-                                                print $price;
-                                            ?>
+                                            $<?php print $option[2]; ?>
                                         </label>
                                     </div>
                                 </div>
-                                <p class="card-text"><small class="text-muted">4 disponibles</small></p>
+                                <p class="card-text"><small class="text-muted"><?php print $option[11] ?> disponibles</small></p>
                                 <form action="add-car.php" method="post">
-                                    <input type="text" name="name" value="Procesador AMD Ryzen 5 3600" style="display: none;">
-                                    <input type="text" name="img" value="img/procesador.jpg" style="display: none;">
-                                    <input type="text" name="price" value="<?php print $price; ?>" style="display: none;">
+                                    <input type="text" name="id" value="<?php print $id ?>" style="display: none;">
+                                    <input type="text" name="name" value="<?php print $option[1]; ?>" style="display: none;">
+                                    <input type="text" name="img" value="<?php print $option[10]; ?>" style="display: none;">
+                                    <input type="text" name="price" value="<?php print $option[2]; ?>" style="display: none;">
                                     <button type="submit" name="sesion" class="btn btn-primary mb-1"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
                                 </form>
                                 <?php
